@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Home | CSE-A</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Firebase Cloud Messaging -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyBXeMTtU1-CjGPpDZM7w0MzH0HG01cZ-Zg",
-    authDomain: "cse-a-notifications.firebaseapp.com",
-    projectId: "cse-a-notifications",
-    storageBucket: "cse-a-notifications.appspot.com",
-    messagingSenderId: "295368934339",
-    appId: "1:295368934339:web:2e3944fa3112b2cb376b76"
-  };
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBXeMTtU1-CjGPpDZM7w0MzH0HG01cZ-Zg",
+      authDomain: "cse-a-notifications.firebaseapp.com",
+      projectId: "cse-a-notifications",
+      storageBucket: "cse-a-notifications.appspot.com",
+      messagingSenderId: "295368934339",
+      appId: "1:295368934339:web:2e3944fa3112b2cb376b76"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-</script>
+    firebase.initializeApp(firebaseConfig);
+  </script>
 
   <style>
     body {
@@ -79,7 +78,6 @@
       display: none;
     }
 
-    /* Marquee */
     marquee {
       background-color: #fff3e0;
       padding: 10px 0;
@@ -92,7 +90,6 @@
       font-weight: bold;
     }
 
-    /* Overview */
     .overview {
       padding: 30px;
       max-width: 900px;
@@ -106,7 +103,6 @@
       color: #4a148c;
     }
 
-    /* Gallery */
     .image-gallery {
       display: flex;
       justify-content: center;
@@ -118,9 +114,8 @@
 
     .image-gallery img {
       width: 300px;
-      height: auto;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease;
     }
 
@@ -152,7 +147,6 @@
       text-decoration: underline;
     }
 
-    /* Footer */
     footer {
       background-color: #6200ea;
       color: white;
@@ -194,6 +188,7 @@
   </style>
 </head>
 <body>
+
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
     <img src="image4.png" alt="CSE-A Logo" />
@@ -208,20 +203,18 @@
   </header>
 
   <marquee scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
-    <p style="text-align:left;">
-      <strong><a href="https://dhanush-the-versatile.github.io/cse-a/updates.html">📢 Check this now! Get updated on class work & homework!</a></strong>
-    </p>
+    <p><strong><a href="https://dhanush-the-versatile.github.io/cse-a/updates.html">📢 Check this now! Get updated on class work & homework!</a></strong></p>
   </marquee>
 
   <section class="overview">
     <h3>Class Overview</h3>
-    <p>Class of strength <strong>66</strong> joined from various institutes. They are aimed for ultimate outcomes like securing their placement in their dream companies and being entrepreneurs. <strong>Ultimate mindsets to achieve big.</strong></p>
+    <p>Class of strength <strong>66</strong> joined from various institutes. They aim for placements and entrepreneurship. <strong>Ultimate mindsets to achieve big.</strong></p>
   </section>
 
   <section class="image-gallery">
-    <img src="image1.jpg" alt="Photo 1">
-    <img src="image2.jpg" alt="Photo 2">
-    <img src="image3.jpg" alt="Photo 3">
+    <img src="image1.jpg" alt="Photo 1" />
+    <img src="image2.jpg" alt="Photo 2" />
+    <img src="image3.jpg" alt="Photo 3" />
   </section>
 
   <h3>Some Important Links</h3>
@@ -239,6 +232,7 @@
     <p><a href="https://dhanush-the-versatile.github.io/Portfolio/">CONTACT ME</a></p>
   </footer>
 
+  <!-- Mobile nav toggle -->
   <script>
     const menuToggle = document.getElementById('mobile-menu');
     const navList = document.querySelector('.nav-list');
@@ -246,45 +240,46 @@
       navList.classList.toggle('active');
     });
   </script>
-</body>
+
+  <!-- FCM Permission & Token -->
   <script>
-  const messaging = firebase.messaging();
+    const messaging = firebase.messaging();
 
-  function requestPermission() {
-    Notification.requestPermission().then((permission) => {
-      if (permission === 'granted') {
-        console.log('✅ Notification permission granted.');
-
-        messaging.getToken({
-          vapidKey: "BHJmsdGGWthNaQJpqF3bB6EhfAxr9AdaQ2NkHHFpB-Q3pf5kCHNTKcnFkpU2nw7-w6Vl6dY0iRNz5zCuK991QCY"
-        }).then((currentToken) => {
-          if (currentToken) {
-            console.log('🔥 FCM Token:', currentToken);
-            // TODO: Save or send this token to your server if needed
-          } else {
-            console.warn('⚠️ No token retrieved. Permission might be blocked.');
-          }
-        }).catch((err) => {
-          console.error('❌ Token error:', err);
-        });
-
-      } else {
-        console.warn('🔕 Notification permission denied.');
-      }
-    });
-  }
-
-  requestPermission();
-</script>
-  <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('firebase-messaging-sw.js')
-      .then((registration) => {
-        console.log('✅ Service Worker registered with scope:', registration.scope);
-      }).catch((err) => {
-        console.error('❌ Service Worker registration failed:', err);
+    function requestPermission() {
+      Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+          console.log('✅ Notification permission granted.');
+          messaging.getToken({
+            vapidKey: "BHJmsdGGWthNaQJpqF3bB6EhfAxr9AdaQ2NkHHFpB-Q3pf5kCHNTKcnFkpU2nw7-w6Vl6dY0iRNz5zCuK991QCY"
+          }).then((currentToken) => {
+            if (currentToken) {
+              console.log('🔥 FCM Token:', currentToken);
+            } else {
+              console.warn('⚠️ No token retrieved.');
+            }
+          }).catch((err) => {
+            console.error('❌ Token error:', err);
+          });
+        } else {
+          console.warn('🔕 Notification permission denied.');
+        }
       });
-  }
-</script>
+    }
 
+    requestPermission();
+  </script>
+
+  <!-- Register Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('firebase-messaging-sw.js')
+        .then((registration) => {
+          console.log('✅ Service Worker registered:', registration.scope);
+        }).catch((err) => {
+          console.error('❌ Service Worker registration failed:', err);
+        });
+    }
+  </script>
+
+</body>
 </html>
