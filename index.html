@@ -4,6 +4,24 @@
   <meta charset="UTF-8">
   <title>Home | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
+<!-- Firebase Cloud Messaging -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBXeMTtU1-CjGPpDZM7w0MzH0HG01cZ-Zg",
+    authDomain: "cse-a-notifications.firebaseapp.com",
+    projectId: "cse-a-notifications",
+    storageBucket: "cse-a-notifications.appspot.com",
+    messagingSenderId: "295368934339",
+    appId: "1:295368934339:web:2e3944fa3112b2cb376b76"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
 
   <style>
     body {
