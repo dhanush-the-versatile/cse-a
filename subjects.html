@@ -5,6 +5,14 @@
   <title>Subjects | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    #currentPeriod {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
@@ -25,17 +33,21 @@
     <ul>
       <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">Syllabus</a></li>
     </ul>
+    
+    <h2>Current Period is</h2>
+    <div id="currentPeriod">Loading current period...</div>
+
     <h3>Subjects</h3>
     <ul>
       <li><a href="https://lendi.edu.in/departments/sh/faculty/197">Mathematical Foundations of Computer Science</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values- Understanding Harmony and Ethical Human Conduct</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values</a></li>
       <li><a href="https://lendi.edu.in/departments/eee/faculty/146">Digital Logic and Computer Organization</a></li>
       <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming</a></li>
       <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems</a></li>
       <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming Lab</a></li>
       <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems Lab</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills-Primary</a> </li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills-Primary</a> </li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills - Primary</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills - Primary</a></li>
       <li><a href="https://lendi.edu.in/departments/sh/faculty/214">Environmental Science</a></li>
     </ul>
   </section>
@@ -50,6 +62,57 @@
     menuToggle.addEventListener('click', () => {
       navList.classList.toggle('active');
     });
+
+    const timetable = {
+      "MON": ["Employability Skills", "MFCS", "MFCS", "DBMS LAB (RED)", "DBMS LAB (RED)", "DBMS LAB (RED)"],
+      "TUE": ["MFCS", "DBMS", "ES", "DLCO", "UHV", "PP"],
+      "WED": ["", "PP LAB (MAROON)", "PP LAB (MAROON)", "MFCS", "UHV", "PP"],
+      "THU": ["PP", "NPTEL", "DBMS", "DLCO", "Sports", ""],
+      "FRI": ["DBMS", "MFCS", "ES", "PP", "DLCO", "UHV"],
+      "SAT": ["DLCO", "PP", "DBMS", "UHV", "MFCS", "LIB/COU"]
+    };
+
+    const periods = [
+      { start: "09:10", end: "10:10", index: 0 },
+      { start: "10:10", end: "11:10", index: 1 },
+      { start: "11:10", end: "12:10", index: 2 },
+      { start: "13:00", end: "14:00", index: 3 },
+      { start: "14:00", end: "15:00", index: 4 },
+      { start: "15:00", end: "16:00", index: 5 }
+    ];
+
+    function getCurrentPeriod() {
+      const now = new Date();
+      const day = now.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+      const time = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+
+      const dayMap = {
+        "MON": "MON",
+        "TUE": "TUE",
+        "WED": "WED",
+        "THU": "THU",
+        "FRI": "FRI",
+        "SAT": "SAT",
+        "SUN": "SUN"
+      };
+
+      const today = dayMap[day];
+
+      if (today === "SUN") {
+        return "No Classes Today (Sunday)";
+      }
+
+      for (const period of periods) {
+        if (time >= period.start && time < period.end) {
+          const subject = timetable[today]?.[period.index] || "Free Period";
+          return `Current Period: ${subject}`;
+        }
+      }
+
+      return "No Ongoing Period (Break or Outside Class Hours)";
+    }
+
+    document.getElementById("currentPeriod").innerText = getCurrentPeriod();
   </script>
 </body>
 </html>
