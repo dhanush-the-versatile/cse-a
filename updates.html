@@ -4,14 +4,134 @@
   <meta charset="UTF-8">
   <title>Updates | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
+      color: #333;
+    }
+
+    .main-header {
+      background-color: #6200ea;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .main-header img {
+      margin-top: 10px;
+      height: 60px;
+    }
+
+    .navbar {
+      margin-top: 10px;
+    }
+
+    .nav-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .nav-list li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-list li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    #mobile-menu {
+      display: none;
+    }
+
+    .overview {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .overview h3 {
+      text-align: center;
+      color: #4a148c;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #f3e5f5;
+      border-left: 5px solid #8e24aa;
+      border-radius: 8px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+      color: #6a1b9a;
+    }
+
+    .section p, .section li {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 30px;
+    }
+
+    footer {
+      background-color: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-list {
+        flex-direction: column;
+        display: none;
+        background-color: #6200ea;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      #mobile-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
-    <!-- ✅ Image replacing "CSE-A" text -->
     <img src="image4.png" alt="CSE-A Logo" />
-    
+
     <nav class="navbar">
       <div class="menu-toggle" id="mobile-menu">☰</div>
       <ul class="nav-list">
@@ -24,23 +144,26 @@
 
   <section class="overview">
     <h3>Latest Updates</h3>
-    <ul>
-<div class="section">
-  <h2>What We've Learnt Today (28-07-2025)</h2>
-  <!--<p><strong>ECP:</strong> Did Vocabulary Practice, Speech Activities.</p>
-  <p><strong>DEVC:</strong> Differential Equations of 1st order and 1st degree</p>
-  <p><strong>BEEE:</strong> Form factor, Peak Factor, RMS, Max value and Behavior of Resistor in AC Circuit.</p>
-  <p><strong>Chemistry:</strong> Elastomers (Buna-S, Buna-N) and its properties & Applications</p>-->
-</div>
 
-<div class="section">
-  <h2>Works To Be Done At Home (28-07-2025)</h2>
-  <ul>
-    <!--<li><strong>ECP:</strong> Complete your reflection on Padlet and don't forget to give peer feedback on Week-4 Activity.</li>-->
-  </ul>
-</div>
-    </ul>
+    <div class="section">
+      <h2>What We've Learnt Today (28-07-2025)</h2>
+      <!-- Example content (uncomment and edit when ready) -->
+      <!--
+      <p><strong>ECP:</strong> Vocabulary Practice, Speech Activities</p>
+      <p><strong>DEVC:</strong> Differential Equations of 1st order and 1st degree</p>
+      <p><strong>BEEE:</strong> RMS, Peak Factor, Resistor in AC Circuit</p>
+      <p><strong>Chemistry:</strong> Elastomers and their properties</p>
+      -->
+    </div>
+
+    <div class="section">
+      <h2>Works To Be Done At Home (28-07-2025)</h2>
+      <ul>
+        <!-- <li><strong>ECP:</strong> Complete Padlet reflections and peer feedback for Week-4</li> -->
+      </ul>
+    </div>
   </section>
+
   <footer>
     <p>Updates Page | CSE-A</p>
   </footer>
