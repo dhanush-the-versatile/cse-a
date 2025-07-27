@@ -4,14 +4,181 @@
   <meta charset="UTF-8">
   <title>Home | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
+      color: #333;
+    }
+
+    .main-header {
+      background-color: #6200ea;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .main-header img {
+      margin-top: 10px;
+      height: 60px;
+    }
+
+    .navbar {
+      margin-top: 10px;
+    }
+
+    .nav-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .nav-list li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-list li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    #mobile-menu {
+      display: none;
+    }
+
+    /* Marquee */
+    marquee {
+      background-color: #fff3e0;
+      padding: 10px 0;
+      font-size: 1.1em;
+    }
+
+    marquee a {
+      color: #d50000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Overview */
+    .overview {
+      padding: 30px;
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .overview h3 {
+      color: #4a148c;
+    }
+
+    /* Gallery */
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 1000px;
+    }
+
+    .image-gallery img {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    h3 {
+      text-align: center;
+      color: #4a148c;
+    }
+
+    ul {
+      max-width: 800px;
+      margin: auto;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #006064;
+    }
+
+    ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #6200ea;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffccbc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .nav-list {
+        flex-direction: column;
+        display: none;
+        background-color: #6200ea;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      #mobile-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      .image-gallery img {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
-    <!-- ✅ Image replacing "CSE-A" text -->
     <img src="image4.png" alt="CSE-A Logo" />
-    
     <nav class="navbar">
       <div class="menu-toggle" id="mobile-menu">☰</div>
       <ul class="nav-list">
@@ -21,11 +188,14 @@
       </ul>
     </nav>
   </header>
-<marquee scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
-<p style="text-align:left; color:blue;">
-</p><p style="text-align:left; color:blue;">
-<strong><a href="https://dhanush-the-versatile.github.io/cse-a/updates.html">Check This now! To get updated regarding class work and homework!</a></strong></p></marquee>
-  <section class="overview dark">
+
+  <marquee scrollamount="10" onmouseover="this.stop()" onmouseout="this.start()">
+    <p style="text-align:left;">
+      <strong><a href="https://dhanush-the-versatile.github.io/cse-a/updates.html">📢 Check this now! Get updated on class work & homework!</a></strong>
+    </p>
+  </marquee>
+
+  <section class="overview">
     <h3>Class Overview</h3>
     <p>Class of strength <strong>66</strong> joined from various institutes. They are aimed for ultimate outcomes like securing their placement in their dream companies and being entrepreneurs. <strong>Ultimate mindsets to achieve big.</strong></p>
   </section>
@@ -35,20 +205,22 @@
     <img src="image2.jpg" alt="Photo 2">
     <img src="image3.jpg" alt="Photo 3">
   </section>
-  
+
+  <h3>Some Important Links</h3>
+  <ul>
+    <li><a href="https://docs.google.com/spreadsheets/d/15yWimZh0CIPoBClsaTkXuwBVdBR9UDFkmbz0eS0YHUM/edit?usp=sharing">📊 Attendance</a></li>
+    <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">📘 Syllabus</a></li>
+    <li><a href="https://sites.google.com/view/elcslablendi/courses/es-lab?authuser=0">🧪 ELCS Lab</a></li>
+    <li><a href="https://padlet.com/haritheuniversal/28-pos-cse-a-cv0yfzgn4e66z06z">📌 Padlet</a></li>
+    <li><a href="https://drive.google.com/file/d/1dubtXf1t_ERFuCfN1N0g8Rr4rTCr5Xin/view?usp=sharing">📅 Academic Calendar</a></li>
+  </ul>
+
   <footer>
     <p>© 28POS CSE-A | LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</p>
-    <p>Updated by Amara Dhanush Kumar</a> (CR)</p>
-    <li><a href="https://dhanush-the-versatile.github.io/Portfolio/">CONTACT ME</a></li>
+    <p>Updated by Amara Dhanush Kumar (CR)</p>
+    <p><a href="https://dhanush-the-versatile.github.io/Portfolio/">CONTACT ME</a></p>
   </footer>
-  <h3>Some Important Links: </h3>
-  <ul>
-    <li><a href="https://docs.google.com/spreadsheets/d/15yWimZh0CIPoBClsaTkXuwBVdBR9UDFkmbz0eS0YHUM/edit?usp=sharing">Attendance</a></li>
-    <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">Syllabus</a></li>
-    <li><a href="https://sites.google.com/view/elcslablendi/courses/es-lab?authuser=0">ELCS LAB</a></li>
-    <li><a href="https://padlet.com/haritheuniversal/28-pos-cse-a-cv0yfzgn4e66z06z">Padlet</a></li>
-    <li><a href="https://drive.google.com/file/d/1dubtXf1t_ERFuCfN1N0g8Rr4rTCr5Xin/view?usp=sharing">Academic Calendar</a></li>
-  </ul>
+
   <script>
     const menuToggle = document.getElementById('mobile-menu');
     const navList = document.querySelector('.nav-list');
