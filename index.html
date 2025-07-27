@@ -247,4 +247,44 @@
     });
   </script>
 </body>
+  <script>
+  const messaging = firebase.messaging();
+
+  function requestPermission() {
+    Notification.requestPermission().then((permission) => {
+      if (permission === 'granted') {
+        console.log('✅ Notification permission granted.');
+
+        messaging.getToken({
+          vapidKey: "BHJmsdGGWthNaQJpqF3bB6EhfAxr9AdaQ2NkHHFpB-Q3pf5kCHNTKcnFkpU2nw7-w6Vl6dY0iRNz5zCuK991QCY"
+        }).then((currentToken) => {
+          if (currentToken) {
+            console.log('🔥 FCM Token:', currentToken);
+            // TODO: Save or send this token to your server if needed
+          } else {
+            console.warn('⚠️ No token retrieved. Permission might be blocked.');
+          }
+        }).catch((err) => {
+          console.error('❌ Token error:', err);
+        });
+
+      } else {
+        console.warn('🔕 Notification permission denied.');
+      }
+    });
+  }
+
+  requestPermission();
+</script>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('firebase-messaging-sw.js')
+      .then((registration) => {
+        console.log('✅ Service Worker registered with scope:', registration.scope);
+      }).catch((err) => {
+        console.error('❌ Service Worker registration failed:', err);
+      });
+  }
+</script>
+
 </html>
