@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Subjects | CSE-A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
+    <h2>CSE-A</h2>
+    <nav class="navbar">
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="updates.html">Updates</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="overview">
+    <h3>Subjects</h3>
+    <ul>
+      <li>Mathematics - IV</li>
+      <li>Operating Systems</li>
+      <li>Database Management Systems</li>
+      <li>Computer Networks</li>
+      <li>Web Technologies</li>
+      <li>Open Elective: Python Programming</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Subjects Page | CSE-A</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
