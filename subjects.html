@@ -4,20 +4,125 @@
   <meta charset="UTF-8">
   <title>Subjects | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    #currentPeriod {
-      font-size: 1.5em;
-      font-weight: bold;
+    /* Default Styles Preserved */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
       color: #333;
+    }
+
+    .main-header {
+      background-color: #6200ea;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .main-header img {
+      margin-top: 10px;
+      height: 60px;
+    }
+
+    .navbar {
+      margin-top: 10px;
+    }
+
+    .nav-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .nav-list li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-list li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
+
+    #mobile-menu {
+      display: none;
+    }
+
+    .overview {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    #currentPeriod {
+      font-size: 1.7em;
+      font-weight: bold;
+      background: #ff80ab;
+      color: white;
+      padding: 15px;
       margin: 20px 0;
+      border-radius: 10px;
+      animation: fadeIn 1s ease-in-out;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #6200ea;
+      color: white;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-list {
+        flex-direction: column;
+        display: none;
+        background-color: #6200ea;
+      }
+
+      .nav-list.active {
+        display: flex;
+      }
+
+      #mobile-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 <body>
+
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
-    <h2>CSE-A</h2>
+    <!-- ✅ Image replacing "CSE-A" text -->
+    <img src="image4.png" alt="CSE-A Logo" />
+    
     <nav class="navbar">
       <div class="menu-toggle" id="mobile-menu">☰</div>
       <ul class="nav-list">
@@ -33,7 +138,7 @@
     <ul>
       <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">Syllabus</a></li>
     </ul>
-    
+
     <h2>Current Period is</h2>
     <div id="currentPeriod">Loading current period...</div>
 
