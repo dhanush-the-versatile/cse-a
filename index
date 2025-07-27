@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | CSE-A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="main-header">
+    <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
+    <h2>CSE-A</h2>
+    <nav class="navbar">
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li><a href="updates.html">Updates</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="overview dark">
+    <h3>Class Overview</h3>
+    <p>Class of strength <strong>66</strong> joined from various institutes. They are aimed for ultimate outcomes like securing their placement in their dream companies and being entrepreneurs. <strong>Ultimate mindsets to achieve big.</strong></p>
+  </section>
+
+  <section class="image-gallery">
+    <img src="image1.jpg" alt="Photo 1">
+    <img src="image2.jpg" alt="Photo 2">
+    <img src="image3.jpg" alt="Photo 3">
+  </section>
+
+  <footer>
+    <p>© 28POS CSE-A | LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</p>
+    <p>Updated by Amara Dhanush Kumar (CR)</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
