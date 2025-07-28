@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <title>Subjects | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    /* Default Styles Preserved */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -72,21 +70,34 @@
       margin-top: 20px;
     }
 
-    #currentPeriod {
-      font-size: 1.7em;
-      font-weight: bold;
-      background: #ff80ab;
-      color: white;
-      padding: 15px;
+    #currentPeriod, #todaysSchedule {
+      font-size: 1.2em;
       margin: 20px 0;
+      padding: 15px;
       border-radius: 10px;
-      animation: fadeIn 1s ease-in-out;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    #currentPeriod {
+      background: #ff80ab;
+      color: white;
+      font-weight: bold;
+    }
+
+    #todaysSchedule {
+      background: #d1c4e9;
+    }
+
+    #todaysSchedule ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    #todaysSchedule li {
+      background: #f9f9f9;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 8px;
     }
 
     footer {
@@ -120,9 +131,7 @@
 
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
-    <!-- ✅ Image replacing "CSE-A" text -->
     <img src="image4.png" alt="CSE-A Logo" />
-    
     <nav class="navbar">
       <div class="menu-toggle" id="mobile-menu">☰</div>
       <ul class="nav-list">
@@ -139,22 +148,24 @@
       <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">Syllabus</a></li>
     </ul>
 
-    <h2>Current Period is</h2>
+    <h2>Current Period</h2>
     <div id="currentPeriod">Loading current period...</div>
 
-    <h3>Subjects</h3>
-    <ul>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/197">Mathematical Foundations of Computer Science</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values</a></li>
-      <li><a href="https://lendi.edu.in/departments/eee/faculty/146">Digital Logic and Computer Organization</a></li>
-      <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming</a></li>
-      <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems</a></li>
-      <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming Lab</a></li>
-      <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems Lab</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills - Primary</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills - Primary</a></li>
-      <li><a href="https://lendi.edu.in/departments/sh/faculty/214">Environmental Science</a></li>
-    </ul>
+    <h2>Today's Schedule</h2>
+    <div id="todaysSchedule">Loading today's schedule...</div>
+<h3>Subjects</h3>
+<ul>
+  <li><a href="https://lendi.edu.in/departments/sh/faculty/197">Mathematical Foundations of Computer Science</a></li>
+  <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values</a></li>
+  <li><a href="https://lendi.edu.in/departments/eee/faculty/146">Digital Logic and Computer Organization</a></li>
+  <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming</a></li>
+  <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems</a></li>
+  <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming Lab</a></li>
+  <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems Lab</a></li>
+  <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills - Primary</a></li>
+  <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills - Primary</a></li>
+  <li><a href="https://lendi.edu.in/departments/sh/faculty/214">Environmental Science</a></li>
+</ul>
   </section>
 
   <footer>
@@ -169,12 +180,12 @@
     });
 
     const timetable = {
-      "MON": ["Employability Skills", "MFCS", "MFCS", "DBMS LAB (RED)", "DBMS LAB (RED)", "DBMS LAB (RED)"],
-      "TUE": ["MFCS", "DBMS", "ES", "DLCO", "UHV", "PP"],
-      "WED": ["", "PP LAB (MAROON)", "PP LAB (MAROON)", "MFCS", "UHV", "PP"],
-      "THU": ["PP", "NPTEL", "DBMS", "DLCO", "Sports", ""],
+      "MON": ["Employability Skills", "MFCS", "DBMS LAB (RED)", "DBMS LAB (RED)", "DBMS LAB (RED)", "DBMS LAB (RED)"],
+      "TUE": ["MFCS", "DBMS", "ES", "DLCO", "DBMS", "PP"],
+      "WED": ["PP LAB (MAROON)", "PP LAB (MAROON)", "PP LAB (MAROON)", "MFCS", "UHV", "PP"],
+      "THU": ["PP", "DLCO", "DBMS", "NPTEL (CCC)", "NPTEL(CCC)", "DLCO"],
       "FRI": ["DBMS", "MFCS", "ES", "PP", "DLCO", "UHV"],
-      "SAT": ["DLCO", "PP", "DBMS", "UHV", "MFCS", "LIB/COU"]
+      "SAT": ["DLCO", "PP", "DBMS", "UHV", "MFCS", "MFCS"]
     };
 
     const periods = [
@@ -191,21 +202,8 @@
       const day = now.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
       const time = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
 
-      const dayMap = {
-        "MON": "MON",
-        "TUE": "TUE",
-        "WED": "WED",
-        "THU": "THU",
-        "FRI": "FRI",
-        "SAT": "SAT",
-        "SUN": "SUN"
-      };
-
-      const today = dayMap[day];
-
-      if (today === "SUN") {
-        return "No Classes Today (Sunday)";
-      }
+      const today = day.slice(0, 3).toUpperCase();
+      if (today === "SUN") return "No Classes Today (Sunday)";
 
       for (const period of periods) {
         if (time >= period.start && time < period.end) {
@@ -213,11 +211,29 @@
           return `Current Period: ${subject}`;
         }
       }
-
       return "No Ongoing Period (Break or Outside Class Hours)";
     }
 
+    function getTodaysSchedule() {
+      const now = new Date();
+      const day = now.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+      const today = day.slice(0, 3).toUpperCase();
+
+      if (today === "SUN") return "No Classes Today (Sunday)";
+      const todaySchedule = timetable[today] || [];
+
+      let html = "<ul>";
+      for (let i = 0; i < periods.length; i++) {
+        const timeSlot = `${periods[i].start} - ${periods[i].end}`;
+        const subject = todaySchedule[i] || "Free Period";
+        html += `<li><strong>${timeSlot}:</strong> ${subject}</li>`;
+      }
+      html += "</ul>";
+      return html;
+    }
+
     document.getElementById("currentPeriod").innerText = getCurrentPeriod();
+    document.getElementById("todaysSchedule").innerHTML = getTodaysSchedule();
   </script>
 </body>
 </html>
