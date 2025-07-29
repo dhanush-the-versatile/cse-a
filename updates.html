@@ -44,6 +44,10 @@
       gap: 30px;
     }
 
+    .nav-list li {
+      position: relative;
+    }
+
     .nav-list li a {
       text-decoration: none;
       color: white;
@@ -55,6 +59,36 @@
     .nav-list li a:hover {
       background-color: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
+    }
+
+    .nav-list li ul {
+      display: none;
+      position: absolute;
+      top: 35px;
+      background-color: #6200ea;
+      list-style: none;
+      padding: 10px 0;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+
+    .nav-list li:hover ul {
+      display: block;
+    }
+
+    .nav-list li ul li {
+      width: 150px;
+      text-align: left;
+    }
+
+    .nav-list li ul li a {
+      display: block;
+      padding: 8px 12px;
+      color: white;
+    }
+
+    .nav-list li ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     #mobile-menu {
@@ -124,6 +158,10 @@
         cursor: pointer;
         font-size: 24px;
       }
+
+      .nav-list li ul {
+        position: static;
+      }
     }
   </style>
 </head>
@@ -137,28 +175,55 @@
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="subjects.html">Subjects</a></li>
-        <li><a href="updates.html">Updates</a></li>
+        <li>
+          <a href="#">Updates</a>
+          <ul>
+            <li><a href="#today">Today</a></li>
+            <li><a href="#" id="archive-toggle">Archive</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <section class="overview">
+  <section class="overview" id="today">
     <h3>Latest Updates</h3>
 
     <div class="section">
-      <h2>What We've Learnt Today (28-07-2025)</h2>
-      <p><strong>ES:</strong> We had intro to our main umbrella terms ie.., Writing(paragraph, essay, mail), Listen to Speak Activities, Vocabulary and grammar for accuracy.</p>
-      <p><strong>Python:</strong> Learnt about logical operators and bitwise operators with the examples. </p>
-      <p><strong>DBMS LAB:</strong> We've Learnt about the ER Diagrams and learnt about generalisation, specialisation which includes top down approach and bottom up approach.</p>
-      <!--<p><strong>Chemistry:</strong> Elastomers and their properties</p>
-      -->
+      <h2>What We've Learnt Today (29-07-2025)</h2>
+      <p><strong>MFCS:</strong> Determining the formulas that are equivalent or not by not using truth tables.</p>
+      <p><strong>DBMS:</strong> Objective-oriented model, hierarchical model, network model with advantages and disadvantages, levels of abstraction.</p>
+      <p><strong>ES:</strong> Discussion about the syllabus and content in it including the significance of the units.</p>
+      <p><strong>DLCO:</strong> Binary subtraction, complements (1s, 2s, 9s, 10s, 15s, 16s), unsigned and signed binary numbers.</p>
+      <p><strong>Python:</strong> Membership operators, Identity operators and <code>id()</code> function.</p>
     </div>
 
     <div class="section">
-      <h2>Works To Be Done At Home (28-07-2025)</h2>
+      <h2>Works To Be Done At Home (29-07-2025)</h2>
       <ul>
-        <li><strong>ES:</strong>Go through the intro PPT for more information and update your professional certificate courses status.</li>
+        <li><strong>MFCS:</strong> Do given <a href="https://photos.app.goo.gl/8DgCSAtBWP9RTiC49" target="_blank">sums</a></li>
+        <li><strong>Python:</strong> Get prepared for the exam on the history of Python, features, and operators.</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="overview">
+    <div id="archive-content" style="display: none;">
+      <h3>Archive</h3>
+
+      <div class="section">
+        <h2>What We've Learnt (28-07-2025)</h2>
+        <p><strong>ES:</strong> We had intro to our main umbrella terms i.e., Writing (paragraph, essay, mail), Listen to Speak Activities, Vocabulary and grammar for accuracy.</p>
+        <p><strong>Python:</strong> Learnt about logical operators and bitwise operators with the examples.</p>
+        <p><strong>DBMS LAB:</strong> Learnt about the ER Diagrams and about generalisation, specialisation which includes top-down and bottom-up approach.</p>
+      </div>
+
+      <div class="section">
+        <h2>Works To Be Done At Home (28-07-2025)</h2>
+        <ul>
+          <li><strong>ES:</strong> Go through the intro PPT for more information and update your professional certificate courses status.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -171,6 +236,14 @@
     const navList = document.querySelector('.nav-list');
     menuToggle.addEventListener('click', () => {
       navList.classList.toggle('active');
+    });
+
+    const archiveToggle = document.getElementById('archive-toggle');
+    const archiveContent = document.getElementById('archive-content');
+
+    archiveToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      archiveContent.style.display = archiveContent.style.display === 'none' ? 'block' : 'none';
     });
   </script>
 </body>
