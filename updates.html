@@ -1,250 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Updates | CSE-A</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Updates | CSE-A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
-      color: #333;
-    }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
+      color: #333;
+    }
 
-    .main-header {
-      background-color: #6200ea;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
+    .main-header {
+      background-color: #6200ea;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
 
-    .main-header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+    .main-header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
 
-    .main-header img {
-      margin-top: 10px;
-      height: 60px;
-    }
+    .main-header img {
+      margin-top: 10px;
+      height: 60px;
+    }
 
-    .navbar {
-      margin-top: 10px;
-    }
+    .navbar {
+      margin-top: 10px;
+    }
 
-    .nav-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
+    .nav-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
 
-    .nav-list li {
-      position: relative;
-    }
+    .nav-list li {
+      position: relative;
+    }
 
-    .nav-list li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 8px 12px;
-      transition: background 0.3s;
-    }
+    .nav-list li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
 
-    .nav-list li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
-    }
+    .nav-list li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+    }
 
-    .nav-list li ul {
-      display: none;
-      position: absolute;
-      top: 35px;
-      background-color: #6200ea;
-      list-style: none;
-      padding: 10px 0;
-      border-radius: 5px;
-      z-index: 1000;
-    }
+    .nav-list li ul {
+      display: none;
+      position: absolute;
+      top: 35px;
+      background-color: #6200ea;
+      list-style: none;
+      padding: 10px 0;
+      border-radius: 5px;
+      z-index: 1000;
+    }
 
-    .nav-list li:hover ul {
-      display: block;
-    }
+    .nav-list li:hover ul {
+      display: block;
+    }
 
-    .nav-list li ul li {
-      width: 150px;
-      text-align: left;
-    }
+    .nav-list li ul li {
+      width: 150px;
+      text-align: left;
+    }
 
-    .nav-list li ul li a {
-      display: block;
-      padding: 8px 12px;
-      color: white;
-    }
+    .nav-list li ul li a {
+      display: block;
+      padding: 8px 12px;
+      color: white;
+    }
 
-    .nav-list li ul li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+    .nav-list li ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-    #mobile-menu {
-      display: none;
-    }
+    #mobile-menu {
+      display: none;
+    }
 
-    .overview {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: 40px auto;
-      background: rgba(255, 255, 255, 0.92);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
+    .overview {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-    .overview h3 {
-      text-align: center;
-      color: #4a148c;
-      font-size: 1.8rem;
-      margin-bottom: 30px;
-    }
+    .overview h3 {
+      text-align: center;
+      color: #4a148c;
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
 
-    .section {
-      margin-bottom: 40px;
-      padding: 20px;
-      background-color: #f3e5f5;
-      border-left: 5px solid #8e24aa;
-      border-radius: 8px;
-    }
+    .section {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #f3e5f5;
+      border-left: 5px solid #8e24aa;
+      border-radius: 8px;
+    }
 
-    .section h2 {
-      margin-top: 0;
-      color: #6a1b9a;
-    }
+    .section h2 {
+      margin-top: 0;
+      color: #6a1b9a;
+    }
 
-    .section p, .section li {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
+    .section p, .section li {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
 
-    ul {
-      list-style-type: disc;
-      padding-left: 30px;
-    }
+    ul {
+      list-style-type: disc;
+      padding-left: 30px;
+    }
 
-    footer {
-      background-color: #6200ea;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
+    footer {
+      background-color: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
 
-    @media (max-width: 600px) {
-      .nav-list {
-        flex-direction: column;
-        display: none;
-        background-color: #6200ea;
-      }
+    @media (max-width: 600px) {
+      .nav-list {
+        flex-direction: column;
+        display: none;
+        background-color: #6200ea;
+      }
 
-      .nav-list.active {
-        display: flex;
-      }
+      .nav-list.active {
+        display: flex;
+      }
 
-      #mobile-menu {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-      }
+      #mobile-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+      }
 
-      .nav-list li ul {
-        position: static;
-      }
-    }
-  </style>
+      .nav-list li ul {
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="main-header">
-    <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
-    <img src="image4.png" alt="CSE-A Logo" />
+  <header class="main-header">
+    <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
+    <img src="image4.png" alt="CSE-A Logo" />
 
-    <nav class="navbar">
-      <div class="menu-toggle" id="mobile-menu">☰</div>
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="subjects.html">Subjects</a></li>
-        <li>
-          <a href="#">Updates</a>
-          <ul>
-            <li><a href="#today">Today</a></li>
-            <li><a href="#" id="archive-toggle">Archive</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </header>
+    <nav class="navbar">
+      <div class="menu-toggle" id="mobile-menu">☰</div>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="subjects.html">Subjects</a></li>
+        <li>
+          <a href="#">Updates</a>
+          <ul>
+            <li><a href="#today">Today</a></li>
+            <li><a href="#" id="archive-toggle">Archive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <section class="overview" id="today">
-    <h3>Latest Updates</h3>
+  <section class="overview" id="today">
+    <h3>Latest Updates</h3>
 
-    <div class="section">
-      <h2>What We've Learnt Today (29-07-2025)</h2>
-      <p><strong>MFCS:</strong> Determining the formulas that are equivalent or not by not using truth tables.</p>
-      <p><strong>DBMS:</strong> Objective-oriented model, hierarchical model, network model with advantages and disadvantages, levels of abstraction.</p>
-      <p><strong>ES:</strong> Discussion about the syllabus and content in it including the significance of the units.</p>
-      <p><strong>DLCO:</strong> Binary subtraction, complements (1s, 2s, 9s, 10s, 15s, 16s), unsigned and signed binary numbers.</p>
-      <p><strong>Python:</strong> Membership operators, Identity operators and <code>id()</code> function.</p>
-    </div>
+    <div class="section">
+      <h2>What We've Learnt Today (30-07-2025)</h2>
+      <p><strong>Pp Lab:</strong> Executed Experiment 1 and Experiment 2 programs</p>
+      <p><strong>MFCS:</strong> Implications</p>
+      <p><strong>UHV:</strong> Learnt about value education and its need</p>
+      <p><strong>PP:</strong> Had an exam on the topics taught these days</p>
+    </div>
 
-    <div class="section">
-      <h2>Works To Be Done At Home (29-07-2025)</h2>
-      <ul>
-        <li><strong>MFCS:</strong> Do given <a href="https://photos.app.goo.gl/8DgCSAtBWP9RTiC49" target="_blank">sums</a></li>
-        <li><strong>Python:</strong> Get prepared for the exam on the history of Python, features, applications and operators.</li>
-      </ul>
-    </div>
-  </section>
+    <div class="section">
+      <h2>Works To Be Done At Home (30-07-2025)</h2>
+      <ul>
+        <li><strong>PP Lab:</strong> Update your Observation with the executed programs</li>
+        <li><strong>MFCS:</strong> Prove the given implications using truth tables and don't forget to bring your MFCS notebooks tomorrow</li>
+      </ul>
+    </div>
+  </section>
 
-  <section class="overview">
-    <div id="archive-content" style="display: none;">
-      <h3>Archive</h3>
+  <section class="overview">
+    <div id="archive-content" style="display: none;">
+      <h3>Archive</h3>
 
-      <div class="section">
-        <h2>What We've Learnt (28-07-2025)</h2>
-        <p><strong>ES:</strong> We had intro to our main umbrella terms i.e., Writing (paragraph, essay, mail), Listen to Speak Activities, Vocabulary and grammar for accuracy.</p>
-        <p><strong>Python:</strong> Learnt about logical operators and bitwise operators with the examples.</p>
-        <p><strong>DBMS LAB:</strong> Learnt about the ER Diagrams and about generalisation, specialisation which includes top-down and bottom-up approach.</p>
-      </div>
+      <div class="section">
+        <h2>What We've Learnt (29-07-2025)</h2>
+        <p><strong>MFCS:</strong> Determining the formulas that are equivalent or not by not using truth tables.</p>
+        <p><strong>DBMS:</strong> Objective-oriented model, hierarchical model, network model with advantages and disadvantages, levels of abstraction.</p>
+        <p><strong>ES:</strong> Discussion about the syllabus and content in it including the significance of the units.</p>
+        <p><strong>DLCO:</strong> Binary subtraction, complements (1s, 2s, 9s, 10s, 15s, 16s), unsigned and signed binary numbers.</p>
+        <p><strong>Python:</strong> Membership operators, Identity operators and <code>id()</code> function.</p>
+      </div>
 
-      <div class="section">
-        <h2>Works To Be Done At Home (28-07-2025)</h2>
-        <ul>
-          <li><strong>ES:</strong> Go through the intro PPT for more information and update your professional certificate courses status.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+      <div class="section">
+        <h2>Works To Be Done At Home (29-07-2025)</h2>
+        <ul>
+          <li><strong>MFCS:</strong> Do given <a href="https://photos.app.goo.gl/8DgCSAtBWP9RTiC49" target="_blank">sums</a></li>
+          <li><strong>Python:</strong> Get prepared for the exam on the history of Python, features, applications and operators.</li>
+        </ul>
+      </div>
 
-  <footer>
-    <p>Updates Page | CSE-A</p>
-  </footer>
+      <div class="section">
+        <h2>What We've Learnt (28-07-2025)</h2>
+        <p><strong>ES:</strong> We had intro to our main umbrella terms i.e., Writing (paragraph, essay, mail), Listen to Speak Activities, Vocabulary and grammar for accuracy.</p>
+        <p><strong>Python:</strong> Learnt about logical operators and bitwise operators with the examples.</p>
+        <p><strong>DBMS LAB:</strong> Learnt about the ER Diagrams and about generalisation, specialisation which includes top-down and bottom-up approach.</p>
+      </div>
 
-  <script>
-    const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('active');
-    });
+      <div class="section">
+        <h2>Works To Be Done At Home (28-07-2025)</h2>
+        <ul>
+          <li><strong>ES:</strong> Go through the intro PPT for more information and update your professional certificate courses status.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    const archiveToggle = document.getElementById('archive-toggle');
-    const archiveContent = document.getElementById('archive-content');
+  <footer>
+    <p>Updates Page | CSE-A</p>
+  </footer>
 
-    archiveToggle.addEventListener('click', (e) => {
-      e.preventDefault();
-      archiveContent.style.display = archiveContent.style.display === 'none' ? 'block' : 'none';
-    });
-  </script>
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+
+    const archiveToggle = document.getElementById('archive-toggle');
+    const archiveContent = document.getElementById('archive-content');
+
+    archiveToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      archiveContent.style.display = archiveContent.style.display === 'none' ? 'block' : 'none';
+    });
+  </script>
 </body>
 </html>
