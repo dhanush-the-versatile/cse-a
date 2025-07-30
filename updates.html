@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <title>Updates | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <style>
     :root {
       --primary-color: #6200ea;
@@ -56,7 +55,7 @@
     }
 
     .nav-list {
-      list-style-type: none;
+      list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
@@ -86,7 +85,6 @@
       position: absolute;
       top: 35px;
       background-color: var(--primary-color);
-      list-style: none;
       padding: 10px 0;
       border-radius: 5px;
       z-index: 1000;
@@ -98,7 +96,6 @@
 
     .nav-list li ul li {
       width: 150px;
-      text-align: left;
     }
 
     .nav-list li ul li a {
@@ -215,7 +212,6 @@
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
     <img src="image4.png" alt="CSE-A Logo" />
-
     <nav class="navbar">
       <div class="menu-toggle" id="mobile-menu">☰</div>
       <ul class="nav-list">
@@ -234,58 +230,11 @@
 
   <section class="overview" id="today">
     <h3>Latest Updates</h3>
-
-    <div class="section">
-      <h2>What We've Learnt Today (30-07-2025)</h2>
-      <p><strong>Pp Lab:</strong> Executed Experiment 1 and Experiment 2 programs</p>
-      <p><strong>MFCS:</strong> Implications</p>
-      <p><strong>UHV:</strong> Learnt about value education and its need</p>
-      <p><strong>PP:</strong> Had an exam on the topics taught these days</p>
-    </div>
-
-    <div class="section">
-      <h2>Works To Be Done At Home (30-07-2025)</h2>
-      <ul>
-        <li><strong>PP Lab:</strong> Update your Observation with the executed programs</li>
-        <li><strong>MFCS:</strong> Prove the given implications using truth tables and don't forget to bring your MFCS notebooks tomorrow</li>
-      </ul>
-    </div>
   </section>
 
   <section class="overview">
     <div id="archive-content" style="display: none;">
       <h3>Archive</h3>
-
-      <div class="section">
-        <h2>What We've Learnt (29-07-2025)</h2>
-        <p><strong>MFCS:</strong> Determining the formulas that are equivalent or not by not using truth tables.</p>
-        <p><strong>DBMS:</strong> Objective-oriented model, hierarchical model, network model with advantages and disadvantages, levels of abstraction.</p>
-        <p><strong>ES:</strong> Discussion about the syllabus and content in it including the significance of the units.</p>
-        <p><strong>DLCO:</strong> Binary subtraction, complements (1s, 2s, 9s, 10s, 15s, 16s), unsigned and signed binary numbers.</p>
-        <p><strong>Python:</strong> Membership operators, Identity operators and <code>id()</code> function.</p>
-      </div>
-
-      <div class="section">
-        <h2>Works To Be Done At Home (29-07-2025)</h2>
-        <ul>
-          <li><strong>MFCS:</strong> Do given <a href="https://photos.app.goo.gl/8DgCSAtBWP9RTiC49" target="_blank">sums</a></li>
-          <li><strong>Python:</strong> Get prepared for the exam on the history of Python, features, applications and operators.</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>What We've Learnt (28-07-2025)</h2>
-        <p><strong>ES:</strong> We had intro to our main umbrella terms i.e., Writing (paragraph, essay, mail), Listen to Speak Activities, Vocabulary and grammar for accuracy.</p>
-        <p><strong>Python:</strong> Learnt about logical operators and bitwise operators with the examples.</p>
-        <p><strong>DBMS LAB:</strong> Learnt about the ER Diagrams and about generalisation, specialisation which includes top-down and bottom-up approach.</p>
-      </div>
-
-      <div class="section">
-        <h2>Works To Be Done At Home (28-07-2025)</h2>
-        <ul>
-          <li><strong>ES:</strong> Go through the intro PPT for more information and update your professional certificate courses status.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -294,24 +243,62 @@
   </footer>
 
   <script>
-    // Toggle mobile menu
-    const menuToggle = document.getElementById('mobile-menu');
-    const navList = document.querySelector('.nav-list');
-    menuToggle.addEventListener('click', () => {
-      navList.classList.toggle('active');
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbxTT1TLN_wTH43rkUHEb0xNlFJ2VhFuJ__x_4gm9Wt03d02MzGw_gae4kuGClcr-n-v/exec'; // Replace if needed
+
+    async function fetchUpdates() {
+      try {
+        const response = await fetch(`${apiUrl}?t=${Date.now()}`);
+        if (!response.ok) throw new Error("Failed to fetch updates.");
+        const updates = await response.json();
+
+        const todaySection = document.getElementById('today');
+        const archiveSection = document.getElementById('archive-content');
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        updates.forEach(entry => {
+          const entryDate = new Date(entry.date);
+          entryDate.setHours(0, 0, 0, 0);
+
+          const section = document.createElement('div');
+          section.className = 'section';
+
+          section.innerHTML = `
+            <h2>${entryDate.getTime() === today.getTime() ? "What We've Learnt Today" : "What We've Learnt"} (${entryDate.toLocaleDateString()})</h2>
+            <p>${entry.learnt?.replace(/\n/g, '<br>')}</p>
+            ${entry.homework ? `<h2>📌 Works To Be Done At Home (${entryDate.toLocaleDateString()})</h2><p>${entry.homework.replace(/\n/g, '<br>')}</p>` : ''}
+          `;
+
+          if (entryDate.getTime() === today.getTime()) {
+            todaySection.appendChild(section);
+          } else {
+            archiveSection.appendChild(section);
+          }
+        });
+
+      } catch (error) {
+        document.getElementById('today').innerHTML += `<p style="color: red;">Unable to load updates.</p>`;
+        console.error(error);
+      }
+    }
+
+    fetchUpdates();
+
+    // Toggle mobile nav
+    document.getElementById('mobile-menu').addEventListener('click', () => {
+      document.querySelector('.nav-list').classList.toggle('active');
     });
 
-    // Toggle archive
-    const archiveToggle = document.getElementById('archive-toggle');
-    const archiveContent = document.getElementById('archive-content');
-    archiveToggle.addEventListener('click', (e) => {
+    // Archive toggle
+    document.getElementById('archive-toggle').addEventListener('click', (e) => {
       e.preventDefault();
-      archiveContent.style.display = archiveContent.style.display === 'none' ? 'block' : 'none';
+      const archive = document.getElementById('archive-content');
+      archive.style.display = archive.style.display === 'none' ? 'block' : 'none';
     });
 
-    // Toggle dark mode
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
     });
   </script>
