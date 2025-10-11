@@ -4,115 +4,216 @@
   <meta charset="UTF-8">
   <title>Subjects | CSE-A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    /* ===== GLOBAL STYLES ===== */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
-      color: #333;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      color: #1b263b;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
+    /* ===== HEADER ===== */
     .main-header {
-      background-color: #6200ea;
+      background: linear-gradient(90deg, #4a148c, #006064);
       color: white;
-      padding: 20px;
+      padding: 25px 10px;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .main-header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.9rem;
+      letter-spacing: 0.5px;
     }
 
     .main-header img {
       margin-top: 10px;
       height: 60px;
+      border-radius: 8px;
     }
 
+    /* ===== NAVBAR ===== */
     .navbar {
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .nav-list {
-      list-style-type: none;
+      list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 25px;
+      background: rgba(0, 0, 0, 0.15);
+      padding: 10px 0;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
     .nav-list li a {
       text-decoration: none;
       color: white;
-      font-weight: bold;
-      padding: 8px 12px;
-      transition: background 0.3s;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
 
     .nav-list li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
     }
 
     #mobile-menu {
       display: none;
+      color: white;
+      cursor: pointer;
+      font-size: 26px;
+      text-align: right;
+      margin-right: 20px;
     }
 
+    /* ===== MAIN CONTENT ===== */
     .overview {
       padding: 30px;
       max-width: 1000px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
     }
 
-    #currentPeriod, #todaysSchedule {
+    .overview:hover {
+      transform: scale(1.01);
+    }
+
+    .overview h2, .overview h3 {
+      color: #4a148c;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* ===== CLOCK ===== */
+    #liveClock {
+      text-align: center;
       font-size: 1.2em;
-      margin: 20px 0;
-      padding: 15px;
+      font-weight: bold;
+      color: #006064;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 10px;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    /* ===== INFO CARDS ===== */
+    #currentPeriod, #todaysSchedule {
+      font-size: 1.1em;
+      margin: 25px 0;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    #currentPeriod:hover,
+    #todaysSchedule:hover {
+      transform: scale(1.02);
     }
 
     #currentPeriod {
-      background: #ff80ab;
+      background: linear-gradient(90deg, #ff4081, #f50057);
       color: white;
       font-weight: bold;
+      text-align: center;
     }
 
     #todaysSchedule {
-      background: #d1c4e9;
+      background: linear-gradient(90deg, #b39ddb, #7e57c2);
+      color: white;
     }
 
     #todaysSchedule ul {
       list-style-type: none;
       padding-left: 0;
+      margin: 10px 0 0;
     }
 
     #todaysSchedule li {
-      background: #f9f9f9;
-      margin: 5px 0;
+      background: rgba(255, 255, 255, 0.15);
+      margin: 6px 0;
       padding: 10px;
       border-radius: 8px;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s;
     }
 
+    #todaysSchedule li:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ===== LINKS ===== */
+    ul {
+      max-width: 800px;
+      margin: 25px auto;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.05em;
+    }
+
+    ul li a {
+      text-decoration: none;
+      color: #006064;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    ul li a:hover {
+      color: #0097a7;
+      text-decoration: underline;
+    }
+
+    /* ===== FOOTER ===== */
     footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #6200ea;
+      background: linear-gradient(90deg, #4a148c, #006064);
       color: white;
-      margin-top: 30px;
+      padding: 25px 10px;
+      text-align: center;
+      margin-top: 60px;
+      font-size: 0.95em;
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
     }
 
-    @media (max-width: 600px) {
+    footer a {
+      color: #ffccbc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      color: #ffe0b2;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 768px) {
       .nav-list {
         flex-direction: column;
         display: none;
-        background-color: #6200ea;
+        background: #4a148c;
+        border-radius: 0;
+        padding: 15px 0;
       }
 
       .nav-list.active {
@@ -121,12 +222,24 @@
 
       #mobile-menu {
         display: block;
-        cursor: pointer;
-        font-size: 24px;
+        position: absolute;
+        top: 18px;
+        right: 20px;
+      }
+
+      .overview {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      #todaysSchedule, #currentPeriod {
+        font-size: 1em;
+        padding: 12px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <header class="main-header">
@@ -148,42 +261,48 @@
       <li><a href="https://drive.google.com/file/d/1vrsrgPO_1_xtIZEykm1lOV_uvMIOHjn0/view?usp=sharing">Syllabus</a></li>
     </ul>
 
+    <div id="liveClock">Loading time...</div>
+
     <h2>Current Period</h2>
     <div id="currentPeriod">Loading current period...</div>
 
     <h2>Today's Schedule</h2>
     <div id="todaysSchedule">Loading today's schedule...</div>
-<h3>Subjects</h3>
-<ul>
-  <li><a href="https://lendi.edu.in/departments/sh/faculty/197">Mathematical Foundations of Computer Science</a></li>
-  <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values</a></li>
-  <li><a href="https://lendi.edu.in/departments/eee/faculty/146">Digital Logic and Computer Organization</a></li>
-  <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming</a></li>
-  <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems</a></li>
-  <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming Lab</a></li>
-  <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems Lab</a></li>
-  <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills - Primary</a></li>
-  <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills - Secondary</a></li>
-  <li><a href="https://lendi.edu.in/departments/sh/faculty/214">Environmental Science</a></li>
-</ul>
+
+    <h3>Subjects</h3>
+    <ul>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/197">Mathematical Foundations of Computer Science</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/221">Universal Human Values</a></li>
+      <li><a href="https://lendi.edu.in/departments/eee/faculty/146">Digital Logic and Computer Organization</a></li>
+      <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming</a></li>
+      <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems</a></li>
+      <li><a href="https://lendi.edu.in/departments/cse/faculty/90">Python Programming Lab</a></li>
+      <li><a href="https://lendi.edu.in/departments/cse/faculty/77">Database Management Systems Lab</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/202">English for Employability Skills - Primary</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/203">English for Employability Skills - Secondary</a></li>
+      <li><a href="https://lendi.edu.in/departments/sh/faculty/214">Environmental Science</a></li>
+    </ul>
   </section>
 
   <footer>
     <p>Subjects Page | CSE-A</p>
+    <p>© 28POS CSE-A | Lendi Institute of Engineering and Technology</p>
   </footer>
 
   <script>
+    // ===== Mobile Navbar =====
     const menuToggle = document.getElementById('mobile-menu');
     const navList = document.querySelector('.nav-list');
     menuToggle.addEventListener('click', () => {
       navList.classList.toggle('active');
     });
 
+    // ===== Timetable Data =====
     const timetable = {
       "MON": ["Employability Skills", "Employability Skills", "PP", "DBMS LAB (RED)", "DBMS LAB (RED)", "DBMS LAB (RED)"],
       "TUE": ["UHV", "DBMS", "ES", "DLCO", "DLCO", "PP"],
       "WED": ["PP LAB (MAROON)", "PP LAB (MAROON)", "PP LAB (MAROON)", "MFCS", "MFCS", "DBMS"],
-      "THU": ["PP", "DLCO", "MFCS", "NPTEL (CCC)", "NPTEL(CCC)", "DBMS"],
+      "THU": ["PP", "DLCO", "MFCS", "NPTEL (CCC)", "NPTEL (CCC)", "DBMS"],
       "FRI": ["DLCO", "MFCS", "MFCS", "PP", "DBMS", "UHV"],
       "SAT": ["DBMS", "DLCO", "PP", "UHV", "MFCS", "ES"]
     };
@@ -201,8 +320,8 @@
       const now = new Date();
       const day = now.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
       const time = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
-
       const today = day.slice(0, 3).toUpperCase();
+
       if (today === "SUN") return "No Classes Today (Sunday)";
 
       for (const period of periods) {
@@ -218,10 +337,9 @@
       const now = new Date();
       const day = now.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
       const today = day.slice(0, 3).toUpperCase();
-
       if (today === "SUN") return "No Classes Today (Sunday)";
-      const todaySchedule = timetable[today] || [];
 
+      const todaySchedule = timetable[today] || [];
       let html = "<ul>";
       for (let i = 0; i < periods.length; i++) {
         const timeSlot = `${periods[i].start} - ${periods[i].end}`;
@@ -232,6 +350,18 @@
       return html;
     }
 
+    // ===== Live Clock =====
+    function updateClock() {
+      const now = new Date();
+      const date = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      document.getElementById("liveClock").innerText = `${date} | ${time}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ===== Display Current Period and Schedule =====
     document.getElementById("currentPeriod").innerText = getCurrentPeriod();
     document.getElementById("todaysSchedule").innerHTML = getTodaysSchedule();
   </script>
