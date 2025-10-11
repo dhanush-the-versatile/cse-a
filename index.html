@@ -21,171 +21,222 @@
 
     firebase.initializeApp(firebaseConfig);
   </script>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+  color: #222;
+  line-height: 1.6;
+}
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0f7fa, #ffe0f7);
-      color: #333;
-    }
+/* ===== HEADER ===== */
+.main-header {
+  background: linear-gradient(90deg, #4a148c, #006064);
+  color: white;
+  padding: 25px 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
 
-    .main-header {
-      background-color: #6200ea;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
+.main-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: 1px;
+}
 
-    .main-header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
+.main-header img {
+  margin-top: 10px;
+  height: 60px;
+  border-radius: 8px;
+}
 
-    .main-header img {
-      margin-top: 10px;
-      height: 60px;
-    }
+/* ===== NAVBAR ===== */
+.navbar {
+  margin-top: 12px;
+}
 
-    .navbar {
-      margin-top: 10px;
-    }
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 10px 0;
+  border-radius: 8px;
+}
 
-    .nav-list {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
+.nav-list li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
 
-    .nav-list li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      padding: 8px 12px;
-      transition: background 0.3s;
-    }
+.nav-list li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
 
-    .nav-list li a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-      border-radius: 5px;
-    }
+/* ===== MOBILE NAV TOGGLE ===== */
+#mobile-menu {
+  display: none;
+  color: white;
+  cursor: pointer;
+  font-size: 26px;
+  text-align: right;
+  margin-right: 20px;
+}
 
-    #mobile-menu {
-      display: none;
-    }
+/* ===== MARQUEE ===== */
+marquee {
+  background-color: #fff8e1;
+  padding: 10px 0;
+  font-size: 1.1em;
+  font-weight: 500;
+  border-bottom: 2px solid #ffd54f;
+}
 
-    marquee {
-      background-color: #fff3e0;
-      padding: 10px 0;
-      font-size: 1.1em;
-    }
+marquee a {
+  color: #d32f2f;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    marquee a {
-      color: #d50000;
-      text-decoration: none;
-      font-weight: bold;
-    }
+marquee a:hover {
+  text-decoration: underline;
+}
 
-    .overview {
-      padding: 30px;
-      max-width: 900px;
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
+/* ===== OVERVIEW ===== */
+.overview {
+  padding: 30px;
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
 
-    .overview h3 {
-      color: #4a148c;
-    }
+.overview h3 {
+  color: #4a148c;
+  font-size: 1.5em;
+}
 
-    .image-gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin: 30px auto;
-      max-width: 1000px;
-    }
+/* ===== IMAGE GALLERY ===== */
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
 
-    .image-gallery img {
-      width: 300px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease;
-    }
+.image-gallery img {
+  width: 300px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .image-gallery img:hover {
-      transform: scale(1.05);
-    }
+.image-gallery img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
 
-    h3 {
-      text-align: center;
-      color: #4a148c;
-    }
+/* ===== LINKS SECTION ===== */
+h3 {
+  text-align: center;
+  color: #4a148c;
+  margin-top: 50px;
+}
 
-    ul {
-      max-width: 800px;
-      margin: auto;
-      padding-left: 20px;
-    }
+ul {
+  max-width: 800px;
+  margin: 20px auto;
+  padding-left: 20px;
+}
 
-    ul li {
-      margin-bottom: 10px;
-    }
+ul li {
+  margin-bottom: 10px;
+  font-size: 1.05em;
+}
 
-    ul li a {
-      text-decoration: none;
-      color: #006064;
-    }
+ul li a {
+  text-decoration: none;
+  color: #006064;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
-    ul li a:hover {
-      text-decoration: underline;
-    }
+ul li a:hover {
+  color: #0097a7;
+  text-decoration: underline;
+}
 
-    footer {
-      background-color: #6200ea;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      margin-top: 40px;
-    }
+/* ===== FOOTER ===== */
+footer {
+  background: linear-gradient(90deg, #4a148c, #006064);
+  color: white;
+  padding: 25px 10px;
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.95em;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
 
-    footer a {
-      color: #ffccbc;
-      text-decoration: none;
-    }
+footer a {
+  color: #ffccbc;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+footer a:hover {
+  text-decoration: underline;
+  color: #ffe0b2;
+}
 
-    @media (max-width: 600px) {
-      .nav-list {
-        flex-direction: column;
-        display: none;
-        background-color: #6200ea;
-      }
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    display: none;
+    background: #4a148c;
+    border-radius: 0;
+    padding: 15px 0;
+  }
 
-      .nav-list.active {
-        display: flex;
-      }
+  .nav-list.active {
+    display: flex;
+  }
 
-      #mobile-menu {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-      }
+  #mobile-menu {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 20px;
+  }
 
-      .image-gallery img {
-        width: 90%;
-      }
-    }
-  </style>
+  .nav-list li a {
+    padding: 12px;
+  }
+
+  .image-gallery img {
+    width: 85%;
+  }
+
+  .overview {
+    margin: 20px;
+  }
+}
+</style>
 </head>
 <body>
 
