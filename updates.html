@@ -58,84 +58,6 @@
       border-radius: 8px;
     }
 
-    /* ===== Navbar ===== */
-    .navbar {
-      margin-top: 12px;
-    }
-
-    .nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      background: rgba(0, 0, 0, 0.15);
-      border-radius: 8px;
-      padding: 10px 0;
-      transition: all 0.3s ease;
-    }
-
-    .nav-list li {
-      position: relative;
-    }
-
-    .nav-list a {
-      text-decoration: none;
-      color: var(--white);
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-
-    .nav-list a:hover {
-      background-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
-    }
-
-    /* Dropdown */
-    .nav-list li ul {
-      display: none;
-      position: absolute;
-      top: 38px;
-      left: 0;
-      background: var(--primary-gradient);
-      border-radius: 6px;
-      padding: 10px 0;
-      min-width: 160px;
-      z-index: 1000;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-    }
-
-    .nav-list li:hover ul {
-      display: block;
-    }
-
-    .nav-list li ul li {
-      width: 100%;
-    }
-
-    .nav-list li ul li a {
-      display: block;
-      color: var(--white);
-      padding: 8px 14px;
-    }
-
-    .nav-list li ul li a:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    #mobile-menu {
-      display: none;
-      color: var(--white);
-      font-size: 26px;
-      cursor: pointer;
-      position: absolute;
-      right: 20px;
-      top: 18px;
-    }
-
     /* ===== Overview / Content ===== */
     .overview {
       padding: 30px;
@@ -219,23 +141,24 @@
       transform: scale(1.05);
     }
 
+    /* ===== Update Button Styles ===== */
+    .btn-update {
+      background: var(--primary-gradient);
+      color: var(--white);
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-update:hover {
+      background: var(--accent-gradient);
+    }
+
     /* ===== Responsive ===== */
     @media (max-width: 768px) {
-      .nav-list {
-        flex-direction: column;
-        display: none;
-        background: #4a148c;
-        border-radius: 0;
-      }
-
-      .nav-list.active {
-        display: flex;
-      }
-
-      #mobile-menu {
-        display: block;
-      }
-
       .overview {
         margin: 20px;
         padding: 20px;
@@ -250,30 +173,22 @@
   <header class="main-header">
     <h1>LENDI INSTITUTE OF ENGINEERING AND TECHNOLOGY</h1>
     <img src="image4.png" alt="CSE-A Logo" />
-    <nav class="navbar">
-      <div id="mobile-menu">☰</div>
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="subjects.html">Subjects</a></li>
-        <li>
-          <a href="#">Updates</a>
-          <ul>
-            <li><a href="#today">Today</a></li>
-            <li><a href="#" id="archive-toggle">Archive</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
   </header>
+
+  <section class="overview" id="updates-options">
+    <h3>📢 Updates</h3>
+    <div>
+      <button id="show-today" class="btn-update">Show Today's Updates</button>
+      <button id="show-archive" class="btn-update">Show Archived Updates</button>
+    </div>
+  </section>
 
   <section class="overview" id="today">
     <h3>📢 Latest Updates</h3>
   </section>
 
-  <section class="overview">
-    <div id="archive-content" style="display: none;">
-      <h3>📚 Archive</h3>
-    </div>
+  <section class="overview" id="archive-content" style="display: none;">
+    <h3>📚 Archive</h3>
   </section>
 
   <footer>
@@ -305,16 +220,10 @@
           const section = document.createElement("div");
           section.className = "section";
 
-          section.innerHTML = `
-            <h2>${entryDate.getTime() === today.getTime()
-              ? "What We’ve Learnt Today"
-              : "What We’ve Learnt"} (${entryDate.toLocaleDateString()})</h2>
+          section.innerHTML = `  
+            <h2>${entryDate.getTime() === today.getTime() ? "What We’ve Learnt Today" : "What We’ve Learnt"} (${entryDate.toLocaleDateString()})</h2>
             <p>${entry.learnt?.replace(/\n/g, "<br>")}</p>
-            ${
-              entry.homework
-                ? `<h2>📌 Works To Be Done At Home (${entryDate.toLocaleDateString()})</h2><p>${entry.homework.replace(/\n/g, "<br>")}</p>`
-                : ""
-            }
+            ${entry.homework ? `<h2>📌 Works To Be Done At Home (${entryDate.toLocaleDateString()})</h2><p>${entry.homework.replace(/\n/g, "<br>")}</p>` : ""}
           `;
 
           if (entryDate.getTime() === today.getTime()) {
@@ -324,23 +233,21 @@
           }
         });
       } catch (error) {
-        document.getElementById("today").innerHTML +=
-          `<p style="color: red;">Unable to load updates.</p>`;
+        document.getElementById("today").innerHTML += `<p style="color: red;">Unable to load updates.</p>`;
       }
     }
 
     fetchUpdates();
 
-    // ===== Navbar Toggle =====
-    document.getElementById("mobile-menu").addEventListener("click", () => {
-      document.querySelector(".nav-list").classList.toggle("active");
+    // ===== Show Today/Archive Toggle =====
+    document.getElementById("show-today").addEventListener("click", () => {
+      document.getElementById("today").style.display = "block";
+      document.getElementById("archive-content").style.display = "none";
     });
 
-    // ===== Archive Toggle =====
-    document.getElementById("archive-toggle").addEventListener("click", (e) => {
-      e.preventDefault();
-      const archive = document.getElementById("archive-content");
-      archive.style.display = archive.style.display === "none" ? "block" : "none";
+    document.getElementById("show-archive").addEventListener("click", () => {
+      document.getElementById("archive-content").style.display = "block";
+      document.getElementById("today").style.display = "none";
     });
 
     // ===== Theme Toggle =====
